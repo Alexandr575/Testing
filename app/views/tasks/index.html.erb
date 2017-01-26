@@ -1,0 +1,49 @@
+<div id="header">
+<h2>Задачи
+<%= link_to image_tag("addTodoIcon.png"),'#add', id:"show_form" %></h2>
+</div>
+<div id="content">
+<div class="row">
+	<% Task.all.each do |task| %>
+	<div class = "col-xs-12 col-md-6 col-lg-4">
+		<div class="body_content">
+			<h2><%= task.title %></h2>
+			<ul>
+			<% task.todos.order("id DESC").each do |todo| %>
+				<li>
+				<label>
+					<%= form_tag '/task/'+ todo.id.to_s, method: "PUT", id:"form_check" + todo.id.to_s do %>
+						
+							<label class="box"><input id="check_b" type="checkbox" name=<%= todo.id.to_s %> <%=todo.isCompleted ? "checked" : ""  %>><span></span></label>
+							<p class="text_box" style= <%=todo.isCompleted ? "text-decoration:line-through" : "none" %>><%= todo.text %>
+						</p>
+					<%end%>
+				</label>
+				</li>
+			<%end%>	
+			</ul>
+		</div>
+	</div>
+	<%end%>		
+</div>
+</div>
+
+<div id="todo_form">
+<div id="mask">
+<div id="mask2">
+	<h2>Новая задача</h2>
+	<div id="simple">
+		<%= form_tag @task, id:"form_todo" do %>
+		<%= text_field_tag :tf  %>
+		<%= select_tag(:sl, options_from_collection_for_select(Task.all, :id, :title))%>
+		<%= link_to 'Отмена', root_path, id:"hide_form" %>
+		<%= link_to 'Ок','#', id:"add_todo" %>
+	</div>
+	<%end%>
+</div>
+</div>
+</div>
+
+
+
+
