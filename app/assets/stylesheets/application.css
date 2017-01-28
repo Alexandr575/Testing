@@ -137,6 +137,23 @@ a{
      width: 370px;
     margin: auto;
 }
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+       height: 40px !important;
+       width: 100%;
+       outline: none;
+       margin-top: 3px;
+       span {
+           line-height: 40px !important;
+            text-align: left;
+            outline: none;
+      }
+
+}
+.select2-selection {
+    border-radius: 0 !important;
+    outline: none;
+}
+
 #tf{
     margin: 0px auto 10px auto;
     width: 370px;

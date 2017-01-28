@@ -16,11 +16,7 @@
 //= require_tree .
 $(document).ready(function() {
 
-
-$('input').iCheck({
-	checkboxClass: 'icheckbox_square-blue',
-});
-
+$("#sl").select2({minimumResultsForSearch: Infinity}); 
 
 });
 
